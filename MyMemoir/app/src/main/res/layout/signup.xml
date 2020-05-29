@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        <TextView
+            android:id="@+id/sign_up_firstnameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="firstname:" />
+
+        <EditText
+            android:id="@+id/sign_up_firstnameText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/sign_up_surnameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="surname:" />
+
+        <EditText
+            android:id="@+id/sign_up_surnameText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/sign_up_genderView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="gender:" />
+
+        <RadioGroup
+            android:id="@+id/sign_up_genderRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/sign_up_femaleGroupID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                />
+            <RadioButton
+                android:id="@+id/sign_up_maleGroupID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/sign_up_DOBView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOB:" />
+
+        <CalendarView
+            android:id="@+id/sign_up_DOB_CalendarView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/sign_up_addressView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address:" />
+
+        <EditText
+            android:id="@+id/sign_up_addressText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/sign_up_stateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="state:" />
+
+        <Spinner
+            android:id="@+id/sign_up_state_spinner"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/sign_up_state_array"/>
+
+        <TextView
+            android:id="@+id/sign_up_postcodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="postcode:" />
+
+        <EditText
+            android:id="@+id/sign_up_postcodeText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/sign_up_e-mailView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="e-mail:" />
+
+        <EditText
+            android:id="@+id/sign_up_emailText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/sign_up_passwordView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password:" />
+
+        <EditText
+            android:id="@+id/sign_up_passwordText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/sign_up_SUBMIT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT" />
+        <Button
+            android:id="@+id/sign_up_RETURN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RETURN" />
+            </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

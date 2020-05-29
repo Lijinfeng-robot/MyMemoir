@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    tools:context=".MovieView">
+
+    <TextView
+        android:id="@+id/movie_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/movie_date"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/movie_message"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+
+    <RatingBar
+        android:id="@+id/memoir_star"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="0.5" />
+
+    <Button
+        android:id="@+id/memoir_add_watchlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoir_score"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:text="Add to Watchlist" />
+<!--        android:onClick="onClick"-->
+
+
+    <Button
+        android:id="@+id/memoir_add_memoir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoir_watchlist_button"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:text="Add to Memoir" />
+<!--    android:onClick="onClick"-->
+
+</LinearLayout>

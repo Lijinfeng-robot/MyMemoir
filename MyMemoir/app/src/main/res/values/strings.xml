@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Memoir</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
+    <string-array name="sign_up_state_array">
+        <item>Australia</item>
+        <item>America</item>
+        <item>Britain</item>
+        <item>China</item>
+        <item>India</item>
+        <item>Italy</item>
+        <item>Vatican</item>
+        <item>Spain</item>
+        <item>New Zealand</item>
+        <item>Germany</item>
+</string-array>
+</resources>
