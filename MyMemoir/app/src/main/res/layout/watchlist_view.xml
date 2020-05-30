@@ -9,24 +9,24 @@
     tools:context=".MovieView">
 
     <TextView
-        android:id="@+id/movie_name"
+        android:id="@+id/movie_name2"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="50dp" />
 
     <TextView
-        android:id="@+id/movie_date"
+        android:id="@+id/movie_date2"
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
     <TextView
-        android:id="@+id/movie_message"
+        android:id="@+id/movie_message2"
         android:layout_width="match_parent"
         android:layout_height="250dp" />
 
 
     <RatingBar
-        android:id="@+id/memoir_star"
+        android:id="@+id/memoir_star2"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,38 +36,29 @@
         android:rating="5"
         android:stepSize="0.5" />
 
-    <Button
-        android:id="@+id/memoir_add_watchlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/memoir_score"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center"
-        android:text="Add to Watchlist" />
-<!--        android:onClick="onClick"-->
+    <!--        android:onClick="onClick"-->
 
 
     <Button
-        android:id="@+id/memoir_add_memoir"
+        android:id="@+id/watchlist_view_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/memoir_watchlist_button"
+        android:layout_below="@+id/memoir_star2"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:gravity="center"
         android:text="Add to Memoir" />
-<!--    android:onClick="onClick"-->
+    <!--    android:onClick="onClick"-->
     <Button
-        android:id="@+id/MovieView_return"
+        android:id="@+id/watchlist_view_return"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/memoir_add_memoir"
+        android:layout_below="@+id/watchlist_view_add"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:gravity="center"
         android:text="Return" />
+
 </LinearLayout>

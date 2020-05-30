@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:layout_marginTop="50dp"
+        android:id="@+id/watchlist_viewList"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:choiceMode="singleChoice"
+        android:listSelector="@drawable/selector_listview"/>/>
+
+    <Button
+        android:id="@+id/watchlist_delete"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Delete" />
+    <Button
+        android:id="@+id/watchlist_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="View" />
+</LinearLayout>

@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.mymemoir.entity.WatchList;
+import com.example.mymemoir.datastructure.ListWatch;
 import com.example.mymemoir.repository.WatchListRepository;
 
 import java.util.List;
@@ -17,17 +17,17 @@ import java.util.List;
  */
 public class WatchListViewModel extends ViewModel {
     private WatchListRepository cRepository;
-    private MutableLiveData<List<WatchList>> allWatchLists;
+    private MutableLiveData<List<ListWatch>> allWatchLists;
 
     public WatchListViewModel() {
         allWatchLists = new MutableLiveData<>();
     }
 
-    public void setWatchLists(List<WatchList> watchLists) {
-        allWatchLists.setValue(watchLists);
+    public void setWatchLists(List<ListWatch> listWatchs) {
+        allWatchLists.setValue(listWatchs);
     }
 
-    public LiveData<List<WatchList>> getAllWatchLists() {
+    public LiveData<List<ListWatch>> getAllWatchLists() {
         return cRepository.getAllWatchLists();
     }
 
@@ -35,27 +35,31 @@ public class WatchListViewModel extends ViewModel {
         cRepository = new WatchListRepository(application);
     }
 
-    public void insert(WatchList watchList) {
-        cRepository.insert(watchList);
+    public void insert(ListWatch listWatch) {
+        cRepository.insert(listWatch);
     }
 
-    public void insertAll(WatchList... watchLists) {
-        cRepository.insertAll(watchLists);
+    public void insertAll(ListWatch... listWatchs) {
+        cRepository.insertAll(listWatchs);
     }
 
     public void deleteAll() {
         cRepository.deleteAll();
     }
 
-    public void update(WatchList... watchLists) {
-        cRepository.updateWatchLists(watchLists);
+    public void deleteByMovieName(final String MovieName) {
+        cRepository.deleteByMovieName(MovieName);
     }
 
-    public void updateByID(int id, final String MovieName, final String ReleaseDate, final String AddedDate) {
-        cRepository.updateWatchListByID(id, MovieName, ReleaseDate, AddedDate);
+    public void update(ListWatch... listWatchs) {
+        cRepository.updateWatchLists(listWatchs);
     }
 
-    public WatchList findByID(int watchListId) {
-        return cRepository.findByID(watchListId);
+    public void updateByID(int id, final String MovieName, final String ReleaseDate, final String AddedDate ,final String Overview, final float Star) {
+        cRepository.updateWatchListByID(id, MovieName, ReleaseDate, AddedDate,Overview, Star);
+    }
+
+    public ListWatch findByID(int listWatchId) {
+        return cRepository.findByID(listWatchId);
     }
 }

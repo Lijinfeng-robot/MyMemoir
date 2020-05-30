@@ -7,8 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.mymemoir.entity.WatchList;
-import com.example.mymemoir.fragment.Watchlist;
+import com.example.mymemoir.datastructure.ListWatch;
 
 import java.util.List;
 
@@ -19,27 +18,30 @@ import static androidx.room.OnConflictStrategy.REPLACE;
  */
 @Dao
 public interface WatchListDAO {
-    @Query("SELECT * FROM WatchList")
-    LiveData<List<WatchList>> getAll();
+    @Query("SELECT * FROM ListWatch")
+    LiveData<List<ListWatch>> getAll();
 
-    @Query("SELECT * FROM watchList WHERE uid = :watchlistId LIMIT 1")
-    WatchList findByID(int watchlistId);
-
-    @Insert
-    void insertAll(WatchList... watchlists);
+    @Query("SELECT * FROM ListWatch WHERE uid = :listWatchId LIMIT 1")
+    ListWatch findByID(int listWatchId);
 
     @Insert
-    long insert(WatchList watchlist);
+    void insertAll(ListWatch... listWatchs);
+
+    @Insert
+    long insert(ListWatch listWatch);
 
     @Delete
-    void delete(WatchList watchlist);
+    void delete(ListWatch listWatch);
 
     @Update(onConflict = REPLACE)
-    void updateWatchlists(WatchList[] watchlists);
+    void updateWatchlists(ListWatch[] listWatchs);
 
-    @Query("DELETE FROM watchList")
+    @Query("DELETE FROM ListWatch")
     void deleteAll();
 
-    @Query("UPDATE watchList SET MovieName=:MovieName, ReleaseDate=:ReleaseDate, AddedDate=:AddedDate WHERE uid = :id")
-    void updatebyID(int id, String MovieName, String ReleaseDate, String AddedDate);
+    @Query("UPDATE ListWatch SET MovieName=:MovieName, ReleaseDate=:ReleaseDate, AddedDate=:AddedDate ,Overview=:Overview ,Star=:Star WHERE uid = :id")
+    void updatebyID(int id, String MovieName, String ReleaseDate, String AddedDate, String Overview, float Star);
+
+    @Query("DELETE FROM ListWatch WHERE MovieName=:MovieName")
+    void deleteByMovieName(String MovieName);
 }

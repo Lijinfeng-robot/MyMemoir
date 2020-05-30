@@ -7,32 +7,32 @@ import androidx.lifecycle.LiveData;
 import com.example.mymemoir.dao.WatchListDAO;
 import com.example.mymemoir.database.WatchListDatabase;
 
-import com.example.mymemoir.entity.WatchList;
+import com.example.mymemoir.datastructure.ListWatch;
 
 import java.util.List;
 
 /** @author LiJinFeng */
 public class WatchListRepository {
   private WatchListDAO dao;
-  private LiveData<List<WatchList>> allWatchLists;
-  private WatchList watchList;
+  private LiveData<List<ListWatch>> allWatchLists;
+  private ListWatch listWatch;
 
   public WatchListRepository(Application application) {
     WatchListDatabase db = WatchListDatabase.getInstance(application);
     dao = db.watchListDAO();
   }
 
-  public LiveData<List<WatchList>> getAllWatchLists() {
+  public LiveData<List<ListWatch>> getAllWatchLists() {
     allWatchLists = dao.getAll();
     return allWatchLists;
   }
 
-  public void insert(final WatchList watchList) {
+  public void insert(final ListWatch listWatch) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            dao.insert(watchList);
+            dao.insert(listWatch);
           }
         });
   }
@@ -46,61 +46,70 @@ public class WatchListRepository {
           }
         });
   }
+  public void deleteByMovieName(final String MovieName){
+      WatchListDatabase.databaseWriteExecutor.execute(
+              new Runnable() {
+                  @Override
+                  public void run() {
+                      dao.deleteByMovieName(MovieName);
+                  }
+              });
+  }
 
-  public void delete(final WatchList watchList) {
+  public void delete(final ListWatch listWatch) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            dao.delete(watchList);
+            dao.delete(listWatch);
           }
         });
   }
 
-  public void insertAll(final WatchList... watchLists) {
+  public void insertAll(final ListWatch... listWatchs) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            dao.insertAll(watchLists);
+            dao.insertAll(listWatchs);
           }
         });
   }
 
-  public void updateWatchLists(final WatchList... watchLists) {
+  public void updateWatchLists(final ListWatch... listWatchs) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            dao.updateWatchlists(watchLists);
+            dao.updateWatchlists(listWatchs);
           }
         });
   }
 
   public void updateWatchListByID(
-      final int id, final String MovieName, final String ReleaseDate, final String AddedDate) {
+      final int id, final String MovieName, final String ReleaseDate, final String AddedDate ,final String Overview, final float Star) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            dao.updatebyID(id, MovieName, ReleaseDate, AddedDate);
+            dao.updatebyID(id, MovieName, ReleaseDate, AddedDate,Overview,Star);
           }
         });
   }
 
-  public WatchList findByID(final int watchlistId) {
+  public ListWatch findByID(final int listWatchId) {
     WatchListDatabase.databaseWriteExecutor.execute(
         new Runnable() {
           @Override
           public void run() {
-            WatchList watchList = dao.findByID(watchlistId);
+            ListWatch watchList = dao.findByID(listWatchId);
             setList(watchList);
           }
         });
-    return watchList;
+    return listWatch;
   }
 
-  public void setList(WatchList watchList) {
-    this.watchList = watchList;
+  public void setList(ListWatch listWatch) {
+    this.listWatch = listWatch;
   }
 }

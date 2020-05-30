@@ -11,10 +11,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mymemoir.fragment.Maps;
+import com.example.mymemoir.fragment.MovieMemoir;
 import com.example.mymemoir.fragment.MovieSearch;
 import com.example.mymemoir.fragment.HomeFragment;
+import com.example.mymemoir.fragment.Reports;
 import com.example.mymemoir.fragment.ViewFragment;
+import com.example.mymemoir.fragment.Watchlist;
+import com.example.mymemoir.viewmodel.WatchListViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 /**
@@ -25,6 +31,7 @@ public class MainScreen extends AppCompatActivity implements NavigationView.OnNa
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
+    public static WatchListViewModel watchListViewModel;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -33,8 +40,17 @@ public class MainScreen extends AppCompatActivity implements NavigationView.OnNa
             case R.id.movieSearch:
                 replaceFragment(new MovieSearch());
                 break;
-            case R.id.displayMessage:
-                replaceFragment(new ViewFragment());
+            case R.id.movieMemoir:
+                replaceFragment(new MovieMemoir());
+                break;
+            case R.id.watchlist:
+                replaceFragment(new Watchlist());
+                break;
+            case R.id.reports:
+                replaceFragment(new Reports());
+                break;
+            case R.id.maps:
+                replaceFragment(new Maps());
                 break;
 
         }
@@ -52,6 +68,9 @@ public class MainScreen extends AppCompatActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainscreen);
 
+
+        watchListViewModel = new ViewModelProvider(this).get(WatchListViewModel.class);
+        watchListViewModel.initalizeVars(getApplication());
         // adding the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +96,7 @@ public class MainScreen extends AppCompatActivity implements NavigationView.OnNa
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }
 

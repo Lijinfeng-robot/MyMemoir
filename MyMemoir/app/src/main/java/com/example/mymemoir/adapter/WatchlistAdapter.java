@@ -1,4 +1,4 @@
-package com.example.mymemoir.MovieSearch;
+package com.example.mymemoir.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mymemoir.networkconnection.GetImageByUrl;
 import com.example.mymemoir.R;
 import com.example.mymemoir.fragment.MovieSearch;
 
@@ -17,15 +18,15 @@ import java.util.Map;
 /**
  * @author LiJinFeng
  */
-public class ImageAdapter extends BaseAdapter {
+public class WatchlistAdapter extends BaseAdapter {
 
-    private List<Map<String, Object>> data;
+    private List<Map<String,String>> data;
 
     private Context context;
 
     private ViewHolder viewHolder;
 
-    public ImageAdapter(Context context, List<Map<String, Object>> data) {
+    public WatchlistAdapter(Context context, List<Map<String,String>> data) {
         this.context = context;
         this.data = data;
     }
@@ -53,32 +54,30 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = View.inflate(context, R.layout.moviesearch_item, null);
-            viewHolder.iv_image = (ImageView) convertView
-                    .findViewById(R.id.iv_image);
-            viewHolder.tv_url = (TextView) convertView
-                    .findViewById(R.id.tv_url);
-            viewHolder.tv_url2 = (TextView) convertView
-                    .findViewById(R.id.tv_url2);
+            convertView = View.inflate(context, R.layout.watchlist_item, null);
+            viewHolder.watchList1 = (TextView) convertView
+                    .findViewById(R.id.watchlist_text1);
+            viewHolder.watchList2 = (TextView) convertView
+                    .findViewById(R.id.watchlist_text2);
+            viewHolder.watchList3 = (TextView) convertView
+                    .findViewById(R.id.watchlist_text3);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Map<String, Object> map = data.get(position);
-        String url = map.get("url").toString();
-        GetImageByUrl getImageByUrl = new GetImageByUrl();
-        getImageByUrl.setImage(viewHolder.iv_image, url);
-        viewHolder.tv_url.setText(MovieSearch.movieName[position]);
-        viewHolder.tv_url2.setText("Release Date:" + MovieSearch.movieDate[position]);
+        Map<String, String> map = data.get(position);
+        viewHolder.watchList1.setText("MovieName: " + map.get("name"));
+        viewHolder.watchList2.setText("ReleaseDate: " + map.get("release date"));
+        viewHolder.watchList3.setText("AddedDate: " + map.get("added date"));
 
         return convertView;
     }
 
     class ViewHolder {
-        public ImageView iv_image;
-        public TextView tv_url;
-        public TextView tv_url2;
+        public TextView watchList1;
+        public TextView watchList2;
+        public TextView watchList3;
     }
 
 }

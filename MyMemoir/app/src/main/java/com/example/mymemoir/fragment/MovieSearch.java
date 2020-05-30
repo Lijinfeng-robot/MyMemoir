@@ -2,7 +2,6 @@ package com.example.mymemoir.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.icu.text.StringPrepParseException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,17 +16,15 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.mymemoir.MovieSearch.ImageAdapter;
+import com.example.mymemoir.adapter.ImageAdapter;
 import com.example.mymemoir.MovieView;
 import com.example.mymemoir.R;
 import com.example.mymemoir.api.TheMovieDBAPI;
-import com.example.mymemoir.datastructure.convert.DateString;
 import com.example.mymemoir.viewmodel.SharedViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,11 +36,11 @@ import java.util.Map;
 public class MovieSearch extends Fragment {
   private EditText etMessage;
   private List<Map<String, Object>> data;
-  public static String[] movieName;
-  public static String[] movieDate;
-  public static String[] movieRate;
-  public static String[] movieOverView;
-  public static String[] movieUrl;
+  public static String[] movieName = new String[100];
+  public static String[] movieDate = new String[100];
+  public static String[] movieRate = new String[100];
+  public static String[] movieOverView = new String[100];
+  public static String[] movieUrl = new String[100];
   private ListView lvImages;
   public static int count = 0;
 
@@ -65,7 +62,6 @@ public class MovieSearch extends Fragment {
           @SuppressLint("StaticFieldLeak")
           @Override
           public void onClick(View v) {
-
             final String message = etMessage.getText().toString().trim();
             if (!message.isEmpty()) {
               new  AsyncTask<String, Void, String>(){
@@ -76,11 +72,6 @@ public class MovieSearch extends Fragment {
                 @Override
                 protected void onPostExecute(String s) {
                   JSONArray res = TheMovieDBAPI.getSnippet(s, "results");
-                  movieName = new String[res.length()];
-                  movieDate = new String[res.length()];
-                  movieRate = new String[res.length()];
-                  movieOverView = new String[res.length()];
-                  movieUrl = new String[res.length()];
                   data = new ArrayList<Map<String, Object>>();
                   try {
                     for (int i = 0; i < res.length(); i++) {

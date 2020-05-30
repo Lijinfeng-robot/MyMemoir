@@ -7,6 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * @author LiJinFeng
+ */
 public class TheMovieDBAPI {
     private static final String API_KEY = "b22cb5b2e5412df88c988e42e568fd7f";
     // search movie

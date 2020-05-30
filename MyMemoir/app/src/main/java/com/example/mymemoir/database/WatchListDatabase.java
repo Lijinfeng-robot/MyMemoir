@@ -8,19 +8,18 @@ import androidx.room.RoomDatabase;
 
 
 import com.example.mymemoir.dao.WatchListDAO;
-import com.example.mymemoir.entity.WatchList;
+import com.example.mymemoir.datastructure.ListWatch;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {WatchList.class}, version = 2, exportSchema = false)
+@Database(entities = {ListWatch.class}, version = 2, exportSchema = false)
 public abstract class WatchListDatabase extends RoomDatabase {
     public abstract WatchListDAO watchListDAO();
 
     private static WatchListDatabase INSTANCE;
     //we create an ExecutorService with a fixed thread pool so we can later run database operations asynchronously on a background thread.
-    private static final int NUMBER_OF_THREADS = 4;
+    private static final int NUMBER_OF_THREADS = 6;
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static synchronized WatchListDatabase getInstance(final Context context) {

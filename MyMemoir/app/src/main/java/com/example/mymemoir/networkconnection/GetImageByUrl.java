@@ -1,4 +1,4 @@
-package com.example.mymemoir.MovieSearch;
+package com.example.mymemoir.networkconnection;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
